@@ -1,0 +1,16 @@
+name: Record workflow run
+summary: Records the current Run ID and recent workflow statuses
+inputs:
+  status:
+    description: Current lifecycle status for this workflow
+    required: true
+outputs:
+  run-id:
+    description: Current GitHub Actions Run ID
+  run-url:
+    description: Current GitHub Actions Run URL
+  history-path:
+    description: Generated history directory
+runs:
+  using: node24
+  main: index.mjs

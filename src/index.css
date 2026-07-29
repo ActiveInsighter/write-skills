@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.58 0.21 267);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.955 0.015 267);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.58 0.245 27.3);
+  --border: oklch(0.91 0 0);
+  --input: oklch(0.91 0 0);
+  --ring: oklch(0.58 0.21 267);
+  --sidebar: oklch(0.975 0.004 267);
+  color-scheme: light;
+}
+
+.dark {
+  --background: oklch(0.145 0.01 267);
+  --foreground: oklch(0.965 0 0);
+  --card: oklch(0.185 0.012 267);
+  --card-foreground: oklch(0.965 0 0);
+  --popover: oklch(0.205 0.012 267);
+  --popover-foreground: oklch(0.965 0 0);
+  --primary: oklch(0.69 0.19 267);
+  --primary-foreground: oklch(0.16 0.02 267);
+  --secondary: oklch(0.245 0.012 267);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.235 0.01 267);
+  --muted-foreground: oklch(0.68 0 0);
+  --accent: oklch(0.265 0.025 267);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.64 0.22 25);
+  --border: oklch(1 0 0 / 0.09);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.69 0.19 267);
+  --sidebar: oklch(0.165 0.012 267);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { border-color: var(--border); }
+html { background: var(--background); }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+button, input, select { font: inherit; }
+::selection { background: color-mix(in oklab, var(--primary) 28%, transparent); }
+
+.prose-editor { color: var(--foreground); font-size: 1rem; line-height: 1.85; }
+.prose-editor > * + * { margin-top: 0.9em; }
+.prose-editor h1 { margin-top: 1.5em; margin-bottom: 0.6em; font-size: 2rem; font-weight: 750; letter-spacing: -0.035em; line-height: 1.2; }
+.prose-editor h2 { margin-top: 1.4em; margin-bottom: 0.5em; font-size: 1.45rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.3; }
+.prose-editor h3 { margin-top: 1.25em; margin-bottom: 0.45em; font-size: 1.15rem; font-weight: 650; }
+.prose-editor p.is-editor-empty:first-child::before { color: var(--muted-foreground); content: attr(data-placeholder); float: left; height: 0; pointer-events: none; }
+.prose-editor ul:not([data-type="taskList"]), .prose-editor ol { padding-left: 1.6rem; }
+.prose-editor ul:not([data-type="taskList"]) { list-style: disc; }
+.prose-editor ol { list-style: decimal; }
+.prose-editor li { margin: 0.25rem 0; }
+.prose-editor ul[data-type="taskList"] { list-style: none; padding: 0; }
+.prose-editor ul[data-type="taskList"] li { display: flex; align-items: flex-start; gap: 0.65rem; }
+.prose-editor ul[data-type="taskList"] li > label { margin-top: 0.28rem; }
+.prose-editor ul[data-type="taskList"] li > div { flex: 1; }
+.prose-editor blockquote { border-left: 3px solid var(--primary); padding-left: 1rem; color: var(--muted-foreground); }
+.prose-editor code { border-radius: 0.35rem; background: var(--secondary); padding: 0.14rem 0.35rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+.prose-editor pre { overflow-x: auto; border: 1px solid var(--border); border-radius: 0.85rem; background: oklch(0.13 0.01 267); padding: 1rem; color: oklch(0.95 0 0); }
+.prose-editor pre code { background: transparent; padding: 0; color: inherit; }
+.prose-editor a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.prose-editor mark { border-radius: 0.2rem; background: oklch(0.84 0.17 92 / 0.5); padding: 0.05rem 0.15rem; color: inherit; }
+.prose-editor hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--border); }
