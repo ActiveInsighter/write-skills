@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-07-29T09:01:27.501Z",
+  "repository": "ActiveInsighter/write-skills",
+  "runs": [
+    {
+      "runId": "30437844333",
+      "runNumber": 2,
+      "workflow": "Deploy Write Skills · 05e9a1775d51759bcd1ae942a44d7fcac1a613af",
+      "event": "workflow_dispatch",
+      "branch": "main",
+      "commit": "05e9a1775d51759bcd1ae942a44d7fcac1a613af",
+      "status": "failure",
+      "createdAt": "2026-07-29T09:00:48Z",
+      "updatedAt": "2026-07-29T09:00:59Z",
+      "url": "https://github.com/ActiveInsighter/write-skills/actions/runs/30437844333"
+    },
+    {
+      "runId": "30437322162",
+      "runNumber": 1,
+      "workflow": "Deploy Write Skills · 05e9a1775d51759bcd1ae942a44d7fcac1a613af",
+      "event": "push",
+      "branch": "main",
+      "commit": "05e9a1775d51759bcd1ae942a44d7fcac1a613af",
+      "status": "failure",
+      "createdAt": "2026-07-29T08:53:19Z",
+      "updatedAt": "2026-07-29T08:53:38Z",
+      "url": "https://github.com/ActiveInsighter/write-skills/actions/runs/30437322162"
+    }
+  ]
+}
