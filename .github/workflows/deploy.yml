@@ -1,7 +1,10 @@
 name: Deploy Cloudflare
-run-name: Deploy ${{ inputs.target }} · ${{ github.ref_name }} @ ${{ github.sha }}
+run-name: Deploy ${{ github.event_name == 'push' && 'production' || inputs.target }} · ${{ github.ref_name }} @ ${{ github.sha }}
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       target:
@@ -17,7 +20,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: cloudflare-deploy-${{ inputs.target }}
+  group: cloudflare-deploy-${{ github.event_name == 'push' && 'production' || inputs.target }}
   cancel-in-progress: false
 
 jobs:
@@ -53,19 +56,20 @@ jobs:
         run: npx wrangler deploy --dry-run
 
   deploy:
-    name: Migrate and deploy ${{ inputs.target }}
+    name: Migrate and deploy ${{ github.event_name == 'push' && 'production' || inputs.target }}
     needs: verify
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     environment:
-      name: ${{ inputs.target }}
+      name: ${{ github.event_name == 'push' && 'production' || inputs.target }}
     env:
       CI: "true"
+      DEPLOY_TARGET: ${{ github.event_name == 'push' && 'production' || inputs.target }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
-      CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME || (inputs.target == 'production' && 'write-skills' || 'write-skills-staging') }}
-      CLOUDFLARE_D1_DATABASE_NAME: ${{ vars.CLOUDFLARE_D1_DATABASE_NAME || (inputs.target == 'production' && 'write-skills-db' || 'write-skills-staging-db') }}
+      CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME || ((github.event_name == 'push' || inputs.target == 'production') && 'write-skills' || 'write-skills-staging') }}
+      CLOUDFLARE_D1_DATABASE_NAME: ${{ vars.CLOUDFLARE_D1_DATABASE_NAME || ((github.event_name == 'push' || inputs.target == 'production') && 'write-skills-db' || 'write-skills-staging-db') }}
       HEALTHCHECK_URL: ${{ vars.HEALTHCHECK_URL }}
       ACCESS_PASSWORD: ${{ secrets.ACCESS_PASSWORD }}
       SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
@@ -129,7 +133,7 @@ jobs:
             CLOUDFLARE_D1_DATABASE_NAME
           do
             if [[ -z "${!name:-}" ]]; then
-              echo "::error title=Missing deployment configuration::$name could not be resolved for the '${{ inputs.target }}' GitHub Environment."
+              echo "::error title=Missing deployment configuration::$name could not be resolved for the '${DEPLOY_TARGET}' GitHub Environment."
               missing=1
             fi
           done
@@ -187,7 +191,7 @@ jobs:
           {
             echo "## Deployment target"
             echo
-            echo "- Environment: \`${{ inputs.target }}\`"
+            echo "- Environment: \`${DEPLOY_TARGET}\`"
             echo "- Worker: \`${CLOUDFLARE_WORKER_NAME}\`"
             echo "- D1: \`${CLOUDFLARE_D1_DATABASE_NAME}\`"
             echo "- Commit: \`${GITHUB_SHA}\`"
