@@ -1,0 +1,424 @@
+/* Workbench visual and interaction refinements.
+ * Keep these overrides isolated from the reusable UI primitives so the shell
+ * can evolve without making every shadcn-style component application-specific.
+ */
+
+[data-slot="sidebar-wrapper"] {
+  background:
+    radial-gradient(
+      circle at 72% -18rem,
+      color-mix(in oklab, var(--primary) 8%, transparent),
+      transparent 38rem
+    ),
+    var(--background);
+}
+
+[data-sidebar="sidebar"] {
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow:
+    inset -1px 0 color-mix(in oklab, var(--sidebar-border) 68%, transparent),
+    0.75rem 0 2.5rem -2.25rem
+      color-mix(in oklab, var(--foreground) 35%, transparent);
+}
+
+.workbench-activity-bar {
+  width: 3.25rem !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--sidebar) 80%, var(--background)),
+    color-mix(in oklab, var(--sidebar) 94%, var(--background))
+  ) !important;
+  padding-block: 0.625rem !important;
+}
+
+.workbench-activity-bar [data-slot="button"] {
+  position: relative;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.7rem;
+  color: color-mix(in oklab, var(--sidebar-foreground) 72%, transparent);
+}
+
+.workbench-activity-bar [data-slot="button"]:hover {
+  background: color-mix(in oklab, var(--sidebar-accent) 78%, transparent);
+  color: var(--sidebar-accent-foreground);
+}
+
+.workbench-activity-bar [data-slot="button"][data-variant="secondary"] {
+  background: color-mix(in oklab, var(--sidebar-primary) 13%, var(--sidebar));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--sidebar-primary) 22%, transparent),
+    0 0.45rem 1.2rem -0.9rem
+      color-mix(in oklab, var(--sidebar-primary) 60%, transparent);
+  color: var(--sidebar-primary);
+}
+
+.workbench-activity-bar [data-slot="button"][data-variant="secondary"]::before {
+  position: absolute;
+  top: 0.48rem;
+  bottom: 0.48rem;
+  left: -0.46rem;
+  width: 0.18rem;
+  border-radius: 999px;
+  background: var(--sidebar-primary);
+  content: "";
+}
+
+.workbench-explorer {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--sidebar) 97%, var(--background)),
+    var(--sidebar)
+  ) !important;
+}
+
+.workbench-explorer [data-sidebar="header"] {
+  gap: 0.75rem;
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--sidebar-border) 82%,
+    transparent
+  ) !important;
+  padding: 0.8rem 0.75rem 0.75rem;
+}
+
+.workbench-explorer [data-sidebar="header"] > div:first-child {
+  min-height: 2.5rem;
+}
+
+.workbench-explorer [data-sidebar="header"] p:first-child {
+  letter-spacing: -0.015em;
+}
+
+.workbench-explorer [data-sidebar="header"] p:last-child {
+  margin-top: 0.12rem;
+  letter-spacing: 0.12em;
+  opacity: 0.72;
+}
+
+.workbench-explorer [data-slot="input-group"] {
+  min-height: 2.35rem;
+  border-color: color-mix(in oklab, var(--sidebar-border) 88%, transparent);
+  border-radius: 0.72rem;
+  background: color-mix(in oklab, var(--background) 62%, var(--sidebar));
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 26%, transparent),
+    0 0.45rem 1.2rem -1.05rem
+      color-mix(in oklab, var(--foreground) 24%, transparent);
+}
+
+.dark .workbench-explorer [data-slot="input-group"] {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, white 5%, transparent),
+    0 0.45rem 1.2rem -1.05rem black;
+}
+
+.workbench-explorer [data-sidebar="content"] {
+  padding: 0.35rem 0.45rem 0.75rem;
+}
+
+.workbench-explorer [data-sidebar="group-label"] {
+  height: 2.15rem;
+  padding-inline: 0.55rem;
+  color: color-mix(in oklab, var(--sidebar-foreground) 58%, transparent);
+  font-size: 0.66rem;
+  font-weight: 680;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.workbench-explorer [data-sidebar="menu-button"] {
+  min-height: 2.15rem;
+  border-radius: 0.58rem;
+  padding-inline: 0.55rem;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.workbench-explorer [data-sidebar="menu-button"]:hover {
+  background: color-mix(in oklab, var(--sidebar-accent) 72%, transparent);
+}
+
+.workbench-explorer [data-sidebar="menu-button"][data-active="true"] {
+  background: color-mix(in oklab, var(--sidebar-primary) 13%, var(--sidebar));
+  box-shadow: inset 0 0 0 1px
+    color-mix(in oklab, var(--sidebar-primary) 20%, transparent);
+  color: var(--sidebar-accent-foreground);
+}
+
+.workbench-explorer
+  [data-sidebar="menu-button"][data-active="true"]
+  > svg:first-child {
+  color: var(--sidebar-primary);
+}
+
+.workbench-explorer [data-sidebar="footer"] {
+  min-height: 2.65rem;
+  justify-content: center;
+  border-top-color: color-mix(
+    in oklab,
+    var(--sidebar-border) 82%,
+    transparent
+  ) !important;
+  background: color-mix(in oklab, var(--sidebar) 90%, var(--background));
+}
+
+/* Make the existing top toggle unmistakable rather than icon-only. */
+[data-sidebar="trigger"] {
+  width: auto !important;
+  min-width: 2.25rem;
+  height: 2.15rem !important;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in oklab, var(--border) 88%, transparent);
+  border-radius: 0.65rem !important;
+  background: color-mix(in oklab, var(--card) 76%, transparent) !important;
+  padding-inline: 0.58rem !important;
+  box-shadow: 0 0.45rem 1.25rem -1.1rem
+    color-mix(in oklab, var(--foreground) 35%, transparent);
+}
+
+[data-sidebar="trigger"]::after {
+  color: var(--foreground);
+  content: "侧边栏";
+  font-size: 0.72rem;
+  font-weight: 620;
+  white-space: nowrap;
+}
+
+[data-sidebar="trigger"]:hover {
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+  background: color-mix(in oklab, var(--accent) 78%, var(--card)) !important;
+}
+
+/* Turn the nearly invisible resize rail into a real collapse/expand handle. */
+[data-sidebar="rail"] {
+  top: 50vh !important;
+  bottom: auto !important;
+  z-index: 40 !important;
+  width: 1.35rem !important;
+  height: 3rem !important;
+  border: 1px solid color-mix(in oklab, var(--sidebar-border) 92%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--card) 92%, var(--sidebar)) !important;
+  box-shadow:
+    0 0.7rem 1.8rem -1rem
+      color-mix(in oklab, var(--foreground) 42%, transparent),
+    inset 0 1px 0 color-mix(in oklab, white 30%, transparent);
+  color: var(--muted-foreground);
+  transform: translateY(-50%) !important;
+}
+
+[data-slot="sidebar"][data-side="left"][data-state="expanded"]
+  [data-sidebar="rail"] {
+  right: -0.68rem !important;
+}
+
+[data-slot="sidebar"][data-side="left"][data-state="collapsed"]
+  [data-sidebar="rail"] {
+  right: -0.68rem !important;
+}
+
+[data-sidebar="rail"]::after {
+  position: absolute !important;
+  inset: 0 !important;
+  display: grid;
+  width: auto !important;
+  place-items: center;
+  background: transparent !important;
+  color: currentColor;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 760;
+  line-height: 1;
+}
+
+[data-slot="sidebar"][data-state="expanded"] [data-sidebar="rail"]::after {
+  content: "‹";
+}
+
+[data-slot="sidebar"][data-state="collapsed"] [data-sidebar="rail"]::after {
+  content: "›";
+}
+
+[data-sidebar="rail"]:hover {
+  border-color: color-mix(in oklab, var(--primary) 34%, var(--sidebar-border));
+  background: color-mix(in oklab, var(--primary) 10%, var(--card)) !important;
+  color: var(--primary);
+}
+
+[data-slot="sidebar-inset"] {
+  min-width: 0;
+  background: transparent !important;
+}
+
+[data-slot="sidebar-inset"] > header:first-child {
+  min-height: 3.35rem;
+  height: 3.35rem;
+  border-bottom-color: color-mix(in oklab, var(--border) 80%, transparent);
+  background: color-mix(
+    in oklab,
+    var(--background) 84%,
+    transparent
+  ) !important;
+  padding-inline: 0.75rem;
+  box-shadow: 0 0.55rem 1.6rem -1.5rem
+    color-mix(in oklab, var(--foreground) 26%, transparent);
+}
+
+[data-slot="sidebar-inset"]
+  > header:first-child
+  > button[aria-label="打开命令中心"] {
+  height: 2.15rem;
+  max-width: 32rem;
+  border-color: color-mix(in oklab, var(--border) 82%, transparent);
+  border-radius: 0.68rem;
+  background: color-mix(in oklab, var(--muted) 58%, transparent);
+}
+
+[data-slot="sidebar-inset"]
+  > header:first-child
+  > button[aria-label="打开命令中心"]:hover {
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+  background: color-mix(in oklab, var(--accent) 64%, var(--muted));
+}
+
+[aria-label="已打开的文档"] {
+  height: 2.55rem !important;
+  gap: 0.28rem;
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--border) 82%,
+    transparent
+  ) !important;
+  background: color-mix(in oklab, var(--muted) 46%, transparent) !important;
+  padding: 0.3rem 0.4rem 0;
+}
+
+[aria-label="已打开的文档"] > div {
+  min-width: 8.75rem !important;
+  max-width: 15rem !important;
+  height: 2.25rem;
+  overflow: hidden;
+  border: 1px solid transparent !important;
+  border-right-width: 1px !important;
+  border-radius: 0.62rem 0.62rem 0 0;
+}
+
+[aria-label="已打开的文档"] > div:has(button[aria-current="page"]) {
+  border-color: color-mix(in oklab, var(--border) 86%, transparent) !important;
+  border-bottom-color: var(--background) !important;
+  background: var(--background) !important;
+  box-shadow: 0 -0.35rem 1rem -0.8rem
+    color-mix(in oklab, var(--foreground) 28%, transparent);
+}
+
+[aria-label="已打开的文档"] > div > span:last-child {
+  height: 0.14rem;
+  border-radius: 999px 999px 0 0;
+}
+
+body .document-editor {
+  background: transparent !important;
+}
+
+body .document-editor__viewport {
+  padding: clamp(1rem, 2vw, 2rem) !important;
+  background:
+    radial-gradient(
+      circle at 50% -12rem,
+      color-mix(in oklab, var(--primary) 9%, transparent),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--muted) 42%, var(--background)),
+      var(--background) 22rem
+    ) !important;
+}
+
+body .document-editor__canvas {
+  --editor-canvas-width: 64rem;
+  min-height: max(42rem, calc(100% - 0.25rem)) !important;
+  border-color: color-mix(in oklab, var(--border) 88%, transparent) !important;
+  border-radius: 1rem !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 97%,
+    var(--background)
+  ) !important;
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--foreground) 5%, transparent),
+    0 1.8rem 5rem -3rem color-mix(in oklab, var(--foreground) 36%, transparent) !important;
+  padding: clamp(2rem, 4.8vw, 4rem) clamp(1.4rem, 6vw, 5rem)
+    clamp(5rem, 9vw, 7rem) !important;
+}
+
+body .document-editor__header {
+  margin-bottom: clamp(1.8rem, 4vw, 3rem) !important;
+  padding-bottom: 1rem !important;
+}
+
+body .document-editor__title {
+  font-size: clamp(1.85rem, 3.6vw, 2.7rem) !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.045em !important;
+}
+
+body .document-editor__hint {
+  opacity: 0.74;
+}
+
+body .editor-toolbar {
+  min-height: 3.05rem !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 90%,
+    var(--background)
+  ) !important;
+  box-shadow: 0 0.6rem 1.6rem -1.55rem
+    color-mix(in oklab, var(--foreground) 30%, transparent) !important;
+}
+
+body .document-editor__statusbar {
+  min-height: 2.15rem !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 78%,
+    var(--background)
+  ) !important;
+  padding-inline: 1rem !important;
+}
+
+@media (max-width: 767px) {
+  [data-sidebar="trigger"] {
+    width: 2.15rem !important;
+    padding-inline: 0 !important;
+  }
+
+  [data-sidebar="trigger"]::after,
+  [data-sidebar="rail"] {
+    display: none !important;
+  }
+
+  [data-slot="sidebar-inset"] > header:first-child {
+    padding-inline: 0.5rem;
+  }
+
+  body .document-editor__viewport {
+    padding: 0 !important;
+  }
+
+  body .document-editor__canvas {
+    border-radius: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workbench-activity-bar [data-slot="button"],
+  .workbench-explorer [data-sidebar="menu-button"] {
+    transition: none;
+  }
+}
