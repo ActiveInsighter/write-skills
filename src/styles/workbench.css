@@ -23,12 +23,11 @@
 
 .workbench-activity-bar {
   width: 3.25rem !important;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--sidebar) 80%, var(--background)),
-      color-mix(in oklab, var(--sidebar) 94%, var(--background))
-    ) !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--sidebar) 80%, var(--background)),
+    color-mix(in oklab, var(--sidebar) 94%, var(--background))
+  ) !important;
   padding-block: 0.625rem !important;
 }
 
@@ -66,12 +65,11 @@
 }
 
 .workbench-explorer {
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--sidebar) 97%, var(--background)),
-      var(--sidebar)
-    ) !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--sidebar) 97%, var(--background)),
+    var(--sidebar)
+  ) !important;
 }
 
 .workbench-explorer [data-sidebar="header"] {
@@ -151,7 +149,9 @@
   color: var(--sidebar-accent-foreground);
 }
 
-.workbench-explorer [data-sidebar="menu-button"][data-active="true"] > svg:first-child {
+.workbench-explorer
+  [data-sidebar="menu-button"][data-active="true"]
+  > svg:first-child {
   color: var(--sidebar-primary);
 }
 
@@ -204,7 +204,8 @@
   border-radius: 999px;
   background: color-mix(in oklab, var(--card) 92%, var(--sidebar)) !important;
   box-shadow:
-    0 0.7rem 1.8rem -1rem color-mix(in oklab, var(--foreground) 42%, transparent),
+    0 0.7rem 1.8rem -1rem
+      color-mix(in oklab, var(--foreground) 42%, transparent),
     inset 0 1px 0 color-mix(in oklab, white 30%, transparent);
   color: var(--muted-foreground);
   transform: translateY(-50%) !important;
@@ -257,13 +258,19 @@
   min-height: 3.35rem;
   height: 3.35rem;
   border-bottom-color: color-mix(in oklab, var(--border) 80%, transparent);
-  background: color-mix(in oklab, var(--background) 84%, transparent) !important;
+  background: color-mix(
+    in oklab,
+    var(--background) 84%,
+    transparent
+  ) !important;
   padding-inline: 0.75rem;
   box-shadow: 0 0.55rem 1.6rem -1.5rem
     color-mix(in oklab, var(--foreground) 26%, transparent);
 }
 
-[data-slot="sidebar-inset"] > header:first-child > button[aria-label="打开命令中心"] {
+[data-slot="sidebar-inset"]
+  > header:first-child
+  > button[aria-label="打开命令中心"] {
   height: 2.15rem;
   max-width: 32rem;
   border-color: color-mix(in oklab, var(--border) 82%, transparent);
@@ -271,7 +278,9 @@
   background: color-mix(in oklab, var(--muted) 58%, transparent);
 }
 
-[data-slot="sidebar-inset"] > header:first-child > button[aria-label="打开命令中心"]:hover {
+[data-slot="sidebar-inset"]
+  > header:first-child
+  > button[aria-label="打开命令中心"]:hover {
   border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
   background: color-mix(in oklab, var(--accent) 64%, var(--muted));
 }
@@ -279,7 +288,11 @@
 [aria-label="已打开的文档"] {
   height: 2.55rem !important;
   gap: 0.28rem;
-  border-bottom-color: color-mix(in oklab, var(--border) 82%, transparent) !important;
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--border) 82%,
+    transparent
+  ) !important;
   background: color-mix(in oklab, var(--muted) 46%, transparent) !important;
   padding: 0.3rem 0.4rem 0;
 }
@@ -331,7 +344,11 @@ body .document-editor__canvas {
   min-height: max(42rem, calc(100% - 0.25rem)) !important;
   border-color: color-mix(in oklab, var(--border) 88%, transparent) !important;
   border-radius: 1rem !important;
-  background: color-mix(in oklab, var(--card) 97%, var(--background)) !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 97%,
+    var(--background)
+  ) !important;
   box-shadow:
     0 1px 2px color-mix(in oklab, var(--foreground) 5%, transparent),
     0 1.8rem 5rem -3rem color-mix(in oklab, var(--foreground) 36%, transparent) !important;
@@ -356,14 +373,22 @@ body .document-editor__hint {
 
 body .editor-toolbar {
   min-height: 3.05rem !important;
-  background: color-mix(in oklab, var(--card) 90%, var(--background)) !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 90%,
+    var(--background)
+  ) !important;
   box-shadow: 0 0.6rem 1.6rem -1.55rem
     color-mix(in oklab, var(--foreground) 30%, transparent) !important;
 }
 
 body .document-editor__statusbar {
   min-height: 2.15rem !important;
-  background: color-mix(in oklab, var(--card) 78%, var(--background)) !important;
+  background: color-mix(
+    in oklab,
+    var(--card) 78%,
+    var(--background)
+  ) !important;
   padding-inline: 1rem !important;
 }
 
