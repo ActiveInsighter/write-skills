@@ -64,8 +64,8 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CLOUDFLARE_D1_DATABASE_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
-      CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME }}
-      CLOUDFLARE_D1_DATABASE_NAME: ${{ vars.CLOUDFLARE_D1_DATABASE_NAME }}
+      CLOUDFLARE_WORKER_NAME: ${{ vars.CLOUDFLARE_WORKER_NAME || (inputs.target == 'production' && 'write-skills' || 'write-skills-staging') }}
+      CLOUDFLARE_D1_DATABASE_NAME: ${{ vars.CLOUDFLARE_D1_DATABASE_NAME || (inputs.target == 'production' && 'write-skills-db' || 'write-skills-staging-db') }}
       HEALTHCHECK_URL: ${{ vars.HEALTHCHECK_URL }}
       ACCESS_PASSWORD: ${{ secrets.ACCESS_PASSWORD }}
       SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
@@ -85,7 +85,37 @@ jobs:
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
-      - name: Validate target configuration
+      - name: Resolve or create D1 database
+        if: ${{ env.CLOUDFLARE_D1_DATABASE_ID == '' }}
+        shell: bash
+        env:
+          D1_DATABASE_NAME: ${{ env.CLOUDFLARE_D1_DATABASE_NAME }}
+        run: |
+          set -euo pipefail
+
+          echo "::notice title=Resolving D1 database::CLOUDFLARE_D1_DATABASE_ID is empty; looking up or creating '${D1_DATABASE_NAME}'."
+          npm run cf:prepare
+
+          database_id="$(node --input-type=module <<'NODE'
+          import fs from "node:fs"
+          import { parse } from "jsonc-parser"
+
+          const source = fs.readFileSync("wrangler.jsonc", "utf8")
+          const config = parse(source)
+          const database = config.d1_databases?.find((item) => item.binding === "DB")
+          process.stdout.write(database?.database_id || "")
+          NODE
+          )"
+
+          if [[ ! "$database_id" =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ ]]; then
+            echo "::error title=Unable to resolve D1 database::cf:prepare did not produce a valid D1 UUID."
+            exit 1
+          fi
+
+          echo "CLOUDFLARE_D1_DATABASE_ID=$database_id" >> "$GITHUB_ENV"
+          echo "- D1 ID: resolved automatically" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate resolved target configuration
         shell: bash
         run: |
           set -euo pipefail
@@ -99,7 +129,7 @@ jobs:
             CLOUDFLARE_D1_DATABASE_NAME
           do
             if [[ -z "${!name:-}" ]]; then
-              echo "::error title=Missing deployment configuration::$name is not configured in the '${{ inputs.target }}' GitHub Environment."
+              echo "::error title=Missing deployment configuration::$name could not be resolved for the '${{ inputs.target }}' GitHub Environment."
               missing=1
             fi
           done
