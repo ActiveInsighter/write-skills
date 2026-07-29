@@ -12,6 +12,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { useEditorStore } from "@/stores/editor-store"
+import "@/styles/workbench.css"
 
 const EditorPage = lazy(() => import("@/components/pages/editor-page"))
 
@@ -181,9 +182,10 @@ export default function App() {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="system"
       enableSystem
       disableTransitionOnChange
+      storageKey="write-skills-theme"
     >
       <TooltipProvider delayDuration={350}>
         <Workspace />
