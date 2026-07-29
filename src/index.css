@@ -4,48 +4,63 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.985 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.58 0.21 267);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.55 0 0);
-  --accent: oklch(0.955 0.015 267);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.245 27.3);
-  --border: oklch(0.91 0 0);
-  --input: oklch(0.91 0 0);
-  --ring: oklch(0.58 0.21 267);
-  --sidebar: oklch(0.975 0.004 267);
+  --radius: 0.625rem;
+  --background: oklch(0.982 0.004 255);
+  --foreground: oklch(0.185 0.018 264);
+  --card: oklch(0.998 0.002 255);
+  --card-foreground: oklch(0.185 0.018 264);
+  --popover: oklch(0.998 0.002 255);
+  --popover-foreground: oklch(0.185 0.018 264);
+  --primary: oklch(0.58 0.205 267);
+  --primary-foreground: oklch(0.99 0.005 255);
+  --secondary: oklch(0.954 0.01 260);
+  --secondary-foreground: oklch(0.255 0.025 264);
+  --muted: oklch(0.958 0.009 260);
+  --muted-foreground: oklch(0.515 0.024 264);
+  --accent: oklch(0.942 0.025 266);
+  --accent-foreground: oklch(0.255 0.05 267);
+  --destructive: oklch(0.59 0.225 28);
+  --border: oklch(0.895 0.014 260);
+  --input: oklch(0.895 0.014 260);
+  --ring: oklch(0.61 0.19 267);
+  --sidebar: oklch(0.956 0.009 260);
+  --sidebar-foreground: oklch(0.265 0.024 264);
+  --sidebar-primary: oklch(0.58 0.205 267);
+  --sidebar-primary-foreground: oklch(0.99 0.005 255);
+  --sidebar-accent: oklch(0.925 0.022 264);
+  --sidebar-accent-foreground: oklch(0.23 0.035 264);
+  --sidebar-border: oklch(0.875 0.016 260);
+  --sidebar-ring: oklch(0.61 0.19 267);
   color-scheme: light;
 }
 
 .dark {
-  --background: oklch(0.145 0.01 267);
-  --foreground: oklch(0.965 0 0);
-  --card: oklch(0.185 0.012 267);
-  --card-foreground: oklch(0.965 0 0);
-  --popover: oklch(0.205 0.012 267);
-  --popover-foreground: oklch(0.965 0 0);
-  --primary: oklch(0.69 0.19 267);
-  --primary-foreground: oklch(0.16 0.02 267);
-  --secondary: oklch(0.245 0.012 267);
-  --secondary-foreground: oklch(0.96 0 0);
-  --muted: oklch(0.235 0.01 267);
-  --muted-foreground: oklch(0.68 0 0);
-  --accent: oklch(0.265 0.025 267);
-  --accent-foreground: oklch(0.97 0 0);
-  --destructive: oklch(0.64 0.22 25);
-  --border: oklch(1 0 0 / 0.09);
-  --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.69 0.19 267);
-  --sidebar: oklch(0.165 0.012 267);
+  --background: oklch(0.145 0.014 264);
+  --foreground: oklch(0.955 0.008 255);
+  --card: oklch(0.18 0.016 264);
+  --card-foreground: oklch(0.955 0.008 255);
+  --popover: oklch(0.205 0.018 264);
+  --popover-foreground: oklch(0.96 0.008 255);
+  --primary: oklch(0.715 0.165 267);
+  --primary-foreground: oklch(0.16 0.03 267);
+  --secondary: oklch(0.235 0.018 264);
+  --secondary-foreground: oklch(0.945 0.008 255);
+  --muted: oklch(0.215 0.016 264);
+  --muted-foreground: oklch(0.69 0.025 260);
+  --accent: oklch(0.275 0.038 267);
+  --accent-foreground: oklch(0.97 0.008 255);
+  --destructive: oklch(0.665 0.205 26);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.14);
+  --ring: oklch(0.715 0.165 267);
+  --sidebar: oklch(0.165 0.016 264);
+  --sidebar-foreground: oklch(0.91 0.012 255);
+  --sidebar-primary: oklch(0.715 0.165 267);
+  --sidebar-primary-foreground: oklch(0.15 0.03 267);
+  --sidebar-accent: oklch(0.235 0.024 264);
+  --sidebar-accent-foreground: oklch(0.96 0.008 255);
+  --sidebar-border: oklch(1 0 0 / 0.09);
+  --sidebar-ring: oklch(0.715 0.165 267);
   color-scheme: dark;
 }
 
@@ -69,33 +84,404 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-sidebar: var(--sidebar);
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans:
+    Inter, "SF Pro Text", "SF Pro Display", "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
-* { border-color: var(--border); }
-html { background: var(--background); }
-body { margin: 0; min-width: 320px; min-height: 100vh; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
-button, input, select { font: inherit; }
-::selection { background: color-mix(in oklab, var(--primary) 28%, transparent); }
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 
-.prose-editor { color: var(--foreground); font-size: 1rem; line-height: 1.85; }
-.prose-editor > * + * { margin-top: 0.9em; }
-.prose-editor h1 { margin-top: 1.5em; margin-bottom: 0.6em; font-size: 2rem; font-weight: 750; letter-spacing: -0.035em; line-height: 1.2; }
-.prose-editor h2 { margin-top: 1.4em; margin-bottom: 0.5em; font-size: 1.45rem; font-weight: 700; letter-spacing: -0.025em; line-height: 1.3; }
-.prose-editor h3 { margin-top: 1.25em; margin-bottom: 0.45em; font-size: 1.15rem; font-weight: 650; }
-.prose-editor p.is-editor-empty:first-child::before { color: var(--muted-foreground); content: attr(data-placeholder); float: left; height: 0; pointer-events: none; }
-.prose-editor ul:not([data-type="taskList"]), .prose-editor ol { padding-left: 1.6rem; }
-.prose-editor ul:not([data-type="taskList"]) { list-style: disc; }
-.prose-editor ol { list-style: decimal; }
-.prose-editor li { margin: 0.25rem 0; }
-.prose-editor ul[data-type="taskList"] { list-style: none; padding: 0; }
-.prose-editor ul[data-type="taskList"] li { display: flex; align-items: flex-start; gap: 0.65rem; }
-.prose-editor ul[data-type="taskList"] li > label { margin-top: 0.28rem; }
-.prose-editor ul[data-type="taskList"] li > div { flex: 1; }
-.prose-editor blockquote { border-left: 3px solid var(--primary); padding-left: 1rem; color: var(--muted-foreground); }
-.prose-editor code { border-radius: 0.35rem; background: var(--secondary); padding: 0.14rem 0.35rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
-.prose-editor pre { overflow-x: auto; border: 1px solid var(--border); border-radius: 0.85rem; background: oklch(0.13 0.01 267); padding: 1rem; color: oklch(0.95 0 0); }
-.prose-editor pre code { background: transparent; padding: 0; color: inherit; }
-.prose-editor a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
-.prose-editor mark { border-radius: 0.2rem; background: oklch(0.84 0.17 92 / 0.5); padding: 0.05rem 0.15rem; color: inherit; }
-.prose-editor hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--border); }
+  html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--background);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100svh;
+    margin: 0;
+    overflow: hidden;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+
+  :focus-visible {
+    scroll-margin: 0.5rem;
+  }
+}
+
+#root {
+  min-height: 100svh;
+}
+
+* {
+  scrollbar-color: color-mix(in oklab, var(--muted-foreground) 38%, transparent)
+    transparent;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 0.15rem solid transparent;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--muted-foreground) 38%, transparent);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--muted-foreground) 58%, transparent);
+  background-clip: padding-box;
+}
+
+[data-sidebar="sidebar"] {
+  box-shadow: inset -1px 0 var(--sidebar-border);
+}
+
+.workbench-activity-bar {
+  background: color-mix(in oklab, var(--sidebar) 76%, var(--background));
+}
+
+.workbench-activity-bar [data-slot="button"][data-variant="secondary"] {
+  box-shadow: inset 2px 0 var(--sidebar-primary);
+}
+
+.workbench-explorer {
+  background: var(--sidebar);
+}
+
+[data-slot="sidebar-inset"] {
+  isolation: isolate;
+}
+
+.login-shell {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: minmax(0, 1.08fr) minmax(28rem, 0.92fr);
+  overflow: auto;
+  background: var(--background);
+}
+
+.login-story {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+  background:
+    radial-gradient(
+      circle at 18% 86%,
+      color-mix(in oklab, var(--primary) 28%, transparent),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 78% 16%,
+      color-mix(in oklab, oklch(0.7 0.16 220) 17%, transparent),
+      transparent 25rem
+    ),
+    oklch(0.14 0.02 264);
+  padding: clamp(2rem, 4vw, 4.5rem);
+  color: oklch(0.965 0.008 255);
+}
+
+.login-story::after {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(oklch(1 0 0 / 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.032) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  content: "";
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+  pointer-events: none;
+}
+
+.login-brand,
+.login-story__content,
+.login-story__foot {
+  position: relative;
+  z-index: 1;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 680;
+  letter-spacing: -0.01em;
+}
+
+.login-brand__mark {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid oklch(1 0 0 / 0.14);
+  border-radius: 0.55rem;
+  background: oklch(1 0 0 / 0.08);
+}
+
+.login-brand__mark svg {
+  width: 1rem;
+}
+
+.login-story__content {
+  display: flex;
+  width: min(100%, 44rem);
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 5rem;
+}
+
+.login-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: oklch(0.78 0.12 267);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.login-eyebrow svg {
+  width: 0.9rem;
+}
+
+.login-story h1 {
+  max-width: 13ch;
+  margin: 1.25rem 0 0;
+  font-size: clamp(2.5rem, 5.2vw, 5.6rem);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.login-story__content > p {
+  max-width: 34rem;
+  margin: 1.75rem 0 0;
+  color: oklch(0.79 0.02 260);
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.8;
+}
+
+.login-features {
+  display: grid;
+  max-width: 40rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+}
+
+.login-features li {
+  display: flex;
+  min-width: 0;
+  gap: 0.75rem;
+  border-top: 1px solid oklch(1 0 0 / 0.12);
+  padding: 1rem 1.25rem 0 0;
+}
+
+.login-features li + li {
+  border-left: 1px solid oklch(1 0 0 / 0.12);
+  padding-left: 1.25rem;
+}
+
+.login-features li > svg {
+  width: 1rem;
+  flex: none;
+  color: oklch(0.75 0.13 267);
+}
+
+.login-features span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.login-features strong {
+  font-size: 0.78rem;
+  font-weight: 610;
+}
+
+.login-features small {
+  color: oklch(0.67 0.02 260);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
+.login-story__foot {
+  color: oklch(0.58 0.025 260);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+}
+
+.login-panel {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 5rem);
+}
+
+.login-card {
+  display: grid;
+  width: min(100%, 25rem);
+  gap: 1.5rem;
+}
+
+.login-card__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  color: var(--primary);
+  box-shadow: 0 0.5rem 1.5rem -1.1rem
+    color-mix(in oklab, var(--foreground) 45%, transparent);
+}
+
+.login-card__icon svg {
+  width: 1.15rem;
+}
+
+.login-card__kicker {
+  margin: 0 0 0.4rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.login-card h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 660;
+  letter-spacing: -0.04em;
+}
+
+.login-card__description {
+  margin: 0.65rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.login-card form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-card__security {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 62rem) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-story {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .login-story__content {
+    padding-block: 4rem 3rem;
+  }
+
+  .login-story h1 {
+    max-width: 16ch;
+    font-size: clamp(2.5rem, 9vw, 4.5rem);
+  }
+
+  .login-panel {
+    min-height: auto;
+    padding-block: 4.5rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .login-story__content {
+    padding-block: 3rem 2.5rem;
+  }
+
+  .login-features {
+    grid-template-columns: 1fr;
+  }
+
+  .login-features li + li {
+    margin-top: 1rem;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .login-panel {
+    padding: 3rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

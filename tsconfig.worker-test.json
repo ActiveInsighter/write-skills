@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker-test.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2022", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["vitest/globals", "@cloudflare/vitest-pool-workers/types"]
+  },
+  "include": [
+    "tests/worker",
+    "worker",
+    "src/lib/contracts.ts",
+    "worker-configuration.d.ts"
+  ]
+}

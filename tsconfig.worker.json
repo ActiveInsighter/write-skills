@@ -10,5 +10,5 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["worker"]
+  "include": ["worker", "src/lib/contracts.ts", "worker-configuration.d.ts"]
 }
