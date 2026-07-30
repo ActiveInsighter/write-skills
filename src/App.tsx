@@ -6,9 +6,7 @@ import { useWorkspaceStore } from "@/features/workspace/workspace-store"
 import { cn } from "@/lib/utils"
 
 function Workspace() {
-  const sidebarCollapsed = useWorkspaceStore(
-    (state) => state.sidebarCollapsed,
-  )
+  const sidebarCollapsed = useWorkspaceStore((state) => state.sidebarCollapsed)
 
   return (
     <div

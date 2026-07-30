@@ -122,10 +122,7 @@ function makeId(prefix: WorkspaceNodeKind) {
   return `${prefix}-${value}`
 }
 
-function getFolderId(
-  nodes: Record<string, WorkspaceNode>,
-  preferred?: string,
-) {
+function getFolderId(nodes: Record<string, WorkspaceNode>, preferred?: string) {
   if (preferred && nodes[preferred]?.kind === "folder") return preferred
   return nodes.writing?.kind === "folder" ? "writing" : "root"
 }
