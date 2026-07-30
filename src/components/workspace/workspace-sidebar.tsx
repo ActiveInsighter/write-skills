@@ -33,10 +33,7 @@ import {
 
 const DEFAULT_EXPANDED_ITEMS = ["getting-started", "writing"]
 
-function findParentId(
-  nodes: Record<string, WorkspaceNode>,
-  childId: string,
-) {
+function findParentId(nodes: Record<string, WorkspaceNode>, childId: string) {
   return (
     Object.values(nodes).find((node) => node.children?.includes(childId))?.id ??
     "root"
@@ -49,9 +46,7 @@ export function WorkspaceSidebar() {
     (state) => state.selectedDocumentId,
   )
   const sidebarOpen = useWorkspaceStore((state) => state.sidebarOpen)
-  const sidebarCollapsed = useWorkspaceStore(
-    (state) => state.sidebarCollapsed,
-  )
+  const sidebarCollapsed = useWorkspaceStore((state) => state.sidebarCollapsed)
   const selectDocument = useWorkspaceStore((state) => state.selectDocument)
   const setSidebarOpen = useWorkspaceStore((state) => state.setSidebarOpen)
   const setSidebarCollapsed = useWorkspaceStore(
@@ -120,7 +115,10 @@ export function WorkspaceSidebar() {
 
   useEffect(() => {
     const handleShortcut = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "k") {
+      if (
+        !(event.metaKey || event.ctrlKey) ||
+        event.key.toLowerCase() !== "k"
+      ) {
         return
       }
 
@@ -348,7 +346,10 @@ export function WorkspaceSidebar() {
                             />
                           )}
                         </span>
-                        <span className="workspace-tree-icon" aria-hidden="true">
+                        <span
+                          className="workspace-tree-icon"
+                          aria-hidden="true"
+                        >
                           {isFolder ? (
                             item.isExpanded() ? (
                               <FolderOpen size={16} />
