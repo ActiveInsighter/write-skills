@@ -24,6 +24,8 @@
     "cf:prepare": "node scripts/prepare-cloudflare.mjs"
   },
   "dependencies": {
+    "@headless-tree/core": "1.7.0",
+    "@headless-tree/react": "1.7.0",
     "@tiptap/core": "3.29.2",
     "@tiptap/extension-character-count": "3.29.2",
     "@tiptap/extension-highlight": "3.29.2",
