@@ -67,7 +67,7 @@ const initialNodes: Record<string, WorkspaceNode> = {
     name: "编辑器快捷方式",
     kind: "document",
     content:
-      "<h1>编辑器快捷方式</h1><p>使用 <code>Ctrl/Cmd + B</code> 加粗，使用 <code>Ctrl/Cmd + K</code> 添加链接。</p><ul data-type=\"taskList\"><li data-type=\"taskItem\" data-checked=\"true\"><label><input type=\"checkbox\" checked=\"checked\"><span></span></label><div><p>熟悉工具栏</p></div></li><li data-type=\"taskItem\" data-checked=\"false\"><label><input type=\"checkbox\"><span></span></label><div><p>创建第一个技能</p></div></li></ul>",
+      '<h1>编辑器快捷方式</h1><p>使用 <code>Ctrl/Cmd + B</code> 加粗，使用 <code>Ctrl/Cmd + K</code> 添加链接。</p><ul data-type="taskList"><li data-type="taskItem" data-checked="true"><label><input type="checkbox" checked="checked"><span></span></label><div><p>熟悉工具栏</p></div></li><li data-type="taskItem" data-checked="false"><label><input type="checkbox"><span></span></label><div><p>创建第一个技能</p></div></li></ul>',
     updatedAt: now,
   },
   writing: {
@@ -118,7 +118,10 @@ function makeId(prefix: string) {
   return `${prefix}-${value}`
 }
 
-function resolveFolder(nodes: Record<string, WorkspaceNode>, preferred?: string) {
+function resolveFolder(
+  nodes: Record<string, WorkspaceNode>,
+  preferred?: string,
+) {
   if (preferred && nodes[preferred]?.kind === "folder") return preferred
   return "writing"
 }

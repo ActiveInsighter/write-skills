@@ -220,12 +220,15 @@ export function SimpleEditor() {
           <input
             value={selectedDocument.name}
             aria-label="文档标题"
-            onChange={(event) => renameNode(selectedDocumentId, event.target.value)}
+            onChange={(event) =>
+              renameNode(selectedDocumentId, event.target.value)
+            }
           />
         </div>
         <div className="editor-document-actions">
           <span className="editor-save-state">
-            <span />已保存
+            <span />
+            已保存
           </span>
           <Button
             type="button"
@@ -240,7 +243,11 @@ export function SimpleEditor() {
       </header>
 
       <div className="simple-editor-shell">
-        <div className="editor-toolbar" role="toolbar" aria-label="文本格式工具栏">
+        <div
+          className="editor-toolbar"
+          role="toolbar"
+          aria-label="文本格式工具栏"
+        >
           <div className="editor-toolbar-scroll">
             <ToolbarAction
               label="撤销"
@@ -285,7 +292,8 @@ export function SimpleEditor() {
                     editor?.chain().focus().toggleHeading({ level: 1 }).run()
                   }
                 >
-                  <Heading1 />标题 1
+                  <Heading1 />
+                  标题 1
                 </button>
                 <button
                   type="button"
@@ -293,7 +301,8 @@ export function SimpleEditor() {
                     editor?.chain().focus().toggleHeading({ level: 2 }).run()
                   }
                 >
-                  <Heading2 />标题 2
+                  <Heading2 />
+                  标题 2
                 </button>
                 <button
                   type="button"
@@ -301,7 +310,8 @@ export function SimpleEditor() {
                     editor?.chain().focus().toggleHeading({ level: 3 }).run()
                   }
                 >
-                  <Heading3 />标题 3
+                  <Heading3 />
+                  标题 3
                 </button>
               </div>
             </details>
@@ -422,21 +432,27 @@ export function SimpleEditor() {
             <ToolbarAction
               label="居中"
               active={editor?.isActive({ textAlign: "center" })}
-              onClick={() => editor?.chain().focus().setTextAlign("center").run()}
+              onClick={() =>
+                editor?.chain().focus().setTextAlign("center").run()
+              }
             >
               <AlignCenter />
             </ToolbarAction>
             <ToolbarAction
               label="右对齐"
               active={editor?.isActive({ textAlign: "right" })}
-              onClick={() => editor?.chain().focus().setTextAlign("right").run()}
+              onClick={() =>
+                editor?.chain().focus().setTextAlign("right").run()
+              }
             >
               <AlignRight />
             </ToolbarAction>
             <ToolbarAction
               label="两端对齐"
               active={editor?.isActive({ textAlign: "justify" })}
-              onClick={() => editor?.chain().focus().setTextAlign("justify").run()}
+              onClick={() =>
+                editor?.chain().focus().setTextAlign("justify").run()
+              }
             >
               <AlignJustify />
             </ToolbarAction>
