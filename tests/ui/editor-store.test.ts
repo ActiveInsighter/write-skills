@@ -38,9 +38,7 @@ describe("workspace store", () => {
     const second = useWorkspaceStore.getState().createDocument("writing")
 
     expect(useWorkspaceStore.getState().nodes[first].name).toBe("未命名技能")
-    expect(useWorkspaceStore.getState().nodes[second].name).toBe(
-      "未命名技能 2",
-    )
+    expect(useWorkspaceStore.getState().nodes[second].name).toBe("未命名技能 2")
   })
 
   it("renames and updates a document", () => {

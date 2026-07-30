@@ -471,12 +471,12 @@ export function SimpleEditor() {
   const isMobile = useIsMobile()
   const { resolvedTheme, setTheme } = useTheme()
 
-  const [mobileView, setMobileView] = useState<
-    "main" | "highlight" | "link"
-  >("main")
-  const [desktopPanel, setDesktopPanel] = useState<
-    "highlight" | "link" | null
-  >(null)
+  const [mobileView, setMobileView] = useState<"main" | "highlight" | "link">(
+    "main",
+  )
+  const [desktopPanel, setDesktopPanel] = useState<"highlight" | "link" | null>(
+    null,
+  )
   const [linkValue, setLinkValue] = useState("https://")
   const [saveState, setSaveState] = useState<"saved" | "saving">("saved")
   const [stats, setStats] = useState({ characters: 0, words: 0 })
@@ -601,9 +601,7 @@ export function SimpleEditor() {
   const openHighlightPanel = () => {
     if (isMobile) setMobileView("highlight")
     else
-      setDesktopPanel((panel) =>
-        panel === "highlight" ? null : "highlight",
-      )
+      setDesktopPanel((panel) => (panel === "highlight" ? null : "highlight"))
   }
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
