@@ -96,8 +96,11 @@ export function SimpleEditor() {
   const [stats, setStats] = useState({ characters: 0, words: 0 })
   const loadedDocumentRef = useRef<string | null>(null)
   const activeDocumentIdRef = useRef(selectedDocumentId)
-  activeDocumentIdRef.current = selectedDocumentId
   const selectedDocument = nodes[selectedDocumentId]
+
+  useEffect(() => {
+    activeDocumentIdRef.current = selectedDocumentId
+  }, [selectedDocumentId])
 
   const editor = useEditor({
     immediatelyRender: false,
