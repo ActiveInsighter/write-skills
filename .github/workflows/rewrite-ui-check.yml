@@ -6,6 +6,9 @@ on:
       - rewrite-project
     paths-ignore:
       - package-lock.json
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -48,7 +51,7 @@ jobs:
         run: npm run build
 
       - name: Commit generated updates
-        if: ${{ github.actor != 'github-actions[bot]' }}
+        if: ${{ github.event_name == 'push' && github.actor != 'github-actions[bot]' }}
         shell: bash
         run: |
           set -euo pipefail
