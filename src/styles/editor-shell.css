@@ -1,0 +1,411 @@
+.editor-workspace {
+  display: flex;
+  min-width: 0;
+  height: 100dvh;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editor-document-header {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  min-height: var(--header-height);
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 76%, transparent);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.editor-menu-button {
+  display: none;
+}
+
+.editor-document-identity {
+  min-width: 0;
+  flex: 1;
+}
+
+.editor-document-identity p {
+  overflow: hidden;
+  margin: 0 0 2px;
+  color: var(--muted-foreground);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10.5px;
+}
+
+.editor-document-identity input {
+  display: block;
+  width: min(620px, 100%);
+  border: 0;
+  outline: 0;
+  padding: 0;
+  color: var(--foreground);
+  background: transparent;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.editor-document-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.editor-save-state {
+  display: inline-flex;
+  height: 29px;
+  align-items: center;
+  gap: 5px;
+  padding: 0 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  background: color-mix(in srgb, var(--card) 72%, transparent);
+  font-size: 10.5px;
+}
+
+.editor-save-state svg {
+  width: 13px;
+  height: 13px;
+}
+
+.editor-save-state.saved svg {
+  color: #21a764;
+}
+
+.simple-editor-wrapper {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tiptap-toolbar-shell {
+  position: relative;
+  z-index: 15;
+  flex: 0 0 auto;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(18px) saturate(1.2);
+}
+
+.tiptap-toolbar {
+  display: flex;
+  min-height: var(--toolbar-height);
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 17px;
+  scrollbar-width: none;
+}
+
+.tiptap-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tiptap-toolbar-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 2px;
+}
+
+.tiptap-toolbar-button {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 100ms ease,
+    background-color 100ms ease,
+    transform 100ms ease;
+}
+
+.tiptap-toolbar-button svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
+}
+
+.tiptap-toolbar-button:hover:not(:disabled) {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+.tiptap-toolbar-button.is-active {
+  color: var(--accent-foreground);
+  background: var(--accent);
+}
+
+.tiptap-toolbar-button:disabled {
+  opacity: 0.33;
+  cursor: not-allowed;
+}
+
+.tiptap-toolbar-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.tiptap-toolbar-separator {
+  width: 1px;
+  height: 22px;
+  flex: 0 0 auto;
+  margin: 0 3px;
+  background: var(--border);
+}
+
+.tiptap-toolbar-menu {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.tiptap-toolbar-menu summary {
+  list-style: none;
+}
+
+.tiptap-toolbar-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.tiptap-toolbar-select {
+  display: flex;
+  min-width: 80px;
+  height: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 0 8px 0 10px;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.tiptap-toolbar-select:hover,
+.tiptap-toolbar-menu[open] .tiptap-toolbar-select {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+.tiptap-toolbar-select svg {
+  width: 13px;
+  height: 13px;
+}
+
+.tiptap-toolbar-menu-content {
+  position: absolute;
+  z-index: 70;
+  display: grid;
+  width: 138px;
+  gap: 2px;
+  margin-top: 6px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--popover);
+  box-shadow: 0 16px 42px rgb(15 23 42 / 14%);
+}
+
+.dark .tiptap-toolbar-menu-content {
+  box-shadow: 0 18px 45px rgb(0 0 0 / 36%);
+}
+
+.tiptap-toolbar-menu-content button {
+  height: 31px;
+  border: 0;
+  border-radius: 7px;
+  padding: 0 9px;
+  color: var(--popover-foreground);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 11px;
+}
+
+.tiptap-toolbar-menu-content button:hover,
+.tiptap-toolbar-menu-content button.is-active {
+  color: var(--accent-foreground);
+  background: var(--accent);
+}
+
+.tiptap-floating-panel {
+  position: absolute;
+  z-index: 70;
+  top: calc(100% + 7px);
+  right: 18px;
+  width: min(330px, calc(100vw - 32px));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--popover);
+  box-shadow: 0 18px 48px rgb(15 23 42 / 15%);
+}
+
+.dark .tiptap-floating-panel {
+  box-shadow: 0 20px 48px rgb(0 0 0 / 38%);
+}
+
+.tiptap-inline-panel {
+  min-width: 0;
+  padding: 12px;
+}
+
+.tiptap-inline-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tiptap-inline-panel-heading button {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  color: var(--muted-foreground);
+  background: transparent;
+  cursor: pointer;
+}
+
+.tiptap-inline-panel-heading button:hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+}
+
+.tiptap-inline-panel-heading svg {
+  width: 14px;
+  height: 14px;
+}
+
+.tiptap-link-input-row {
+  display: flex;
+  gap: 7px;
+}
+
+.tiptap-link-input-row input {
+  min-width: 0;
+  height: 34px;
+  flex: 1;
+  border: 1px solid var(--input);
+  border-radius: 8px;
+  outline: 0;
+  padding: 0 9px;
+  color: var(--foreground);
+  background: var(--card);
+  font-size: 11px;
+}
+
+.tiptap-link-input-row input:focus {
+  border-color: color-mix(in srgb, var(--ring) 55%, var(--input));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 10%, transparent);
+}
+
+.tiptap-link-input-row > button {
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 13px;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.tiptap-panel-text-button {
+  margin-top: 8px;
+  border: 0;
+  padding: 0;
+  color: var(--muted-foreground);
+  background: transparent;
+  cursor: pointer;
+  font-size: 10.5px;
+}
+
+.tiptap-panel-text-button:hover {
+  color: var(--destructive);
+}
+
+.tiptap-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 32px);
+  gap: 7px;
+}
+
+.tiptap-highlight-grid button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--foreground) 11%, transparent);
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    transform 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.tiptap-highlight-grid button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgb(15 23 42 / 11%);
+}
+
+.tiptap-highlight-grid .remove-highlight {
+  color: var(--muted-foreground);
+  background:
+    linear-gradient(135deg, transparent 45%, var(--destructive) 46% 54%, transparent 55%),
+    var(--card);
+}
+
+.tiptap-highlight-grid svg {
+  width: 13px;
+  height: 13px;
+}
+
+.mobile-panel-heading {
+  gap: 7px;
+  padding-right: 4px;
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mobile-panel-heading + .tiptap-toolbar-separator {
+  margin-right: 6px;
+}
+
+.tiptap-toolbar > .tiptap-inline-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.tiptap-toolbar > .tiptap-inline-panel .tiptap-inline-panel-heading {
+  display: none;
+}
+
+.tiptap-toolbar > .highlight-panel .tiptap-highlight-grid {
+  display: flex;
+}
+
+.tiptap-toolbar > .link-panel {
+  min-width: min(430px, calc(100vw - 110px));
+}
