@@ -66,6 +66,7 @@ jobs:
             src/App.tsx \
             src/main.tsx \
             src/index.css \
+            src/styles/*.css \
             src/components/editor/simple-editor.tsx \
             src/components/workspace/workspace-sidebar.tsx \
             src/features/workspace/workspace-store.ts \
