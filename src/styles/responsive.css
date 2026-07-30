@@ -135,7 +135,9 @@
   }
 
   .simple-editor {
-    min-height: calc(100dvh - var(--header-height) - var(--toolbar-height) - 34px);
+    min-height: calc(
+      100dvh - var(--header-height) - var(--toolbar-height) - 34px
+    );
     padding: 34px 22px 70px;
     font-size: 14.5px;
   }

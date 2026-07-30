@@ -370,7 +370,12 @@
 .tiptap-highlight-grid .remove-highlight {
   color: var(--muted-foreground);
   background:
-    linear-gradient(135deg, transparent 45%, var(--destructive) 46% 54%, transparent 55%),
+    linear-gradient(
+      135deg,
+      transparent 45%,
+      var(--destructive) 46% 54%,
+      transparent 55%
+    ),
     var(--card);
 }
 
